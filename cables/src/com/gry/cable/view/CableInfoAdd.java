@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 
 import com.gry.cable.service.CableInfoService;
 
@@ -80,6 +81,12 @@ public class CableInfoAdd extends JInternalFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				CableInfoService cableInfoService = new CableInfoService();
+				if (jTable.isEditing()) {  //判断是否在编辑
+				    int row = jTable.getEditingColumn();//那一行
+				    int col = jTable.getEditingColumn(); //那一列
+				    TableCellEditor editor = jTable.getCellEditor(row, col);
+				    editor.stopCellEditing();
+				}
 				if("".equals(cablemodelJTextField.getText())||cablemodelJTextField.getText()==null){
 					JOptionPane.showMessageDialog(null, "线缆型号不能为空！","警告",JOptionPane.WARNING_MESSAGE);
 					return;
