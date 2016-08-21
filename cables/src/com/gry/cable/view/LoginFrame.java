@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.gry.cable.service.UserService;
+
 public class LoginFrame extends JFrame implements ActionListener
 {
 
@@ -69,13 +71,11 @@ public class LoginFrame extends JFrame implements ActionListener
 			}
 			else
 			{
-				//UserService userService = new UserServiceImpl();
-				//boolean isPass = userService.loginCheck(usernameString,
-				//		passwordString);
-				if (true)
+				UserService userService = new UserService();
+				boolean isPass = userService.loginCheck(usernameString,
+						passwordString);
+				if (isPass)
 				{
-				//	MainFrame.username=usernameString;
-					//MainFrame.nickname=userService.getNickname(usernameString);
 					MainFrame.getMainFrame().setVisible(true);
 					this.setVisible(false);
 				}

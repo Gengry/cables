@@ -118,6 +118,17 @@ public class MainAction
 			}
 		};
 	}
+	public static ActionListener changePassword() {
+		return new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				ChangePasswordFrame changePasswordFrame = new ChangePasswordFrame();
+				MainFrame.getMainFrame().getContentPane().add(changePasswordFrame);
+				changePasswordFrame.setVisible(true);
+			}
+		};
+	}
 
 
 }

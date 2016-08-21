@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
 		menu = new JMenu("系统管理");
 		menuBar.add(menu);
 		menuItem = new JMenuItem("更改密码");
-//		menuItem.addActionListener(MainAction.changePassword());
+		menuItem.addActionListener(MainAction.changePassword());
 		menu.add(menuItem);
 
 		menuItem = new JMenuItem("操作员管理");
