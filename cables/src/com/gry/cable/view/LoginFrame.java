@@ -76,7 +76,7 @@ public class LoginFrame extends JFrame implements ActionListener
 						passwordString);
 				if (isPass)
 				{
-					MainFrame.getMainFrame().setVisible(true);
+					MainFrame.getMainFrameLogin(usernameString).setVisible(true);
 					this.setVisible(false);
 				}
 				else

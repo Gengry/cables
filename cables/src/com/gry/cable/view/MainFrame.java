@@ -16,12 +16,43 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static MainFrame mainFrame;
 	private JDesktopPane desktopPane;
-
+	public  String username;
 	/**
 	 * Create the frame.
 	 */
 	public MainFrame() {
 		super("进销存管理系统");
+		this.username = username;
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		// 获取屏幕的边界 // 获取底部任务栏高度screenInsets.bottom
+		Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(
+				getGraphicsConfiguration());
+		screenSize.setSize(screenSize.width - 50, screenSize.height - 2
+				* screenInsets.bottom);
+		setSize(screenSize);
+		setLocation(20, 20);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		desktopPane = new JDesktopPane();
+		
+		desktopPane.setOpaque(true);
+		
+		this.setContentPane(desktopPane);
+		this.setJMenuBar(createMenuBar());
+		
+		// Set up the backgound image
+		desktopPane.setBackground(new Color(200, 218, 235));
+		// Make dragging a little faster but perhaps uglier.
+		desktopPane.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
+		
+	}
+	/**
+	 * Create the frame.
+	 */
+	public MainFrame(String username) {
+		super("进销存管理系统");
+		this.username = username;
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		// 获取屏幕的边界 // 获取底部任务栏高度screenInsets.bottom
@@ -50,6 +81,12 @@ public class MainFrame extends JFrame {
 	public static MainFrame getMainFrame() {
 		if (mainFrame == null) {
 			mainFrame = new MainFrame();
+		}
+		return mainFrame;
+	}
+	public static MainFrame getMainFrameLogin(String username) {
+		if (mainFrame == null) {
+			mainFrame = new MainFrame(username);
 		}
 		return mainFrame;
 	}
@@ -115,4 +152,11 @@ public class MainFrame extends JFrame {
 
 		return menuBar;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 }
